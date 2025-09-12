@@ -1,20 +1,21 @@
-<html><!-- --><meta charset="utf-8">
+<html>
+<meta charset="utf-8">
 <meta name="color-scheme" content="light dark">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="referrer" content="no-referrer">
 <body>
 <pre id="raw-content" style="word-wrap:break-word;white-space:pre-wrap;font-family:monospace;">Loading...</pre>
 
 <script>
 fetch('./loader.lua', { cache: "no-store" })
-  .then(r => {
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    return r.text();
+  .then(response => {
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    return response.text();
   })
-  .then(t => document.getElementById('raw-content').textContent = t)
-  .catch(e => {
-    document.getElementById('raw-content').textContent = '{"message":"Failed to load: '+ String(e).replace(/"/g,"'") +'"}';
-    console.error(e);
+  .then(text => {
+    document.getElementById("raw-content").textContent = text;
+  })
+  .catch(error => {
+    document.getElementById("raw-content").textContent = '{"message":"Failed to load: ' + error.message + '"}';
   });
 </script>
 </body>
