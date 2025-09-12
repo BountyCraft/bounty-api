@@ -1,21 +1,24 @@
-<html>
-<meta charset="utf-8">
-<meta name="color-scheme" content="light dark">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+</head>
 <body>
-<pre id="raw-content" style="word-wrap:break-word;white-space:pre-wrap;font-family:monospace;">Loading...</pre>
+<pre id="raw"></pre>
 
 <script>
-fetch('./loader.lua', { cache: "no-store" })
+fetch("./loader.lua")
   .then(response => {
-    if (!response.ok) throw new Error("HTTP " + response.status);
+    if (!response.ok) throw new Error("File not found");
     return response.text();
   })
   .then(text => {
-    document.getElementById("raw-content").textContent = text;
+    document.getElementById("raw").textContent = text;
   })
-  .catch(error => {
-    document.getElementById("raw-content").textContent = '{"message":"Failed to load: ' + error.message + '"}';
+  .catch(err => {
+    document.getElementById("raw").textContent = "Error: " + err.message;
   });
 </script>
 </body>
