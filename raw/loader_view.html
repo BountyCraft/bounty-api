@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader Script</title>
+</head>
+<body>
+    <h1>Loader Script</h1>
+    <pre id="raw-content" style="white-space: pre-wrap; word-wrap: break-word;"></pre>
+
+    <script>
+        fetch('loader') 
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('raw-content').textContent = text;
+            })
+            .catch(err => {
+                document.getElementById('raw-content').textContent = "Failed to load raw file.";
+                console.error(err);
+            });
+    </script>
+</body>
+</html>
