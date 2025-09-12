@@ -1,0 +1,16 @@
+<html><!-- --><meta charset=utf-8>
+<meta name=color-scheme content="light dark">
+<meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name=referrer content=no-referrer>
+<meta http-equiv=content-security-policy content="default-src 'none'; font-src 'self' data:; img-src 'self' data:; style-src 'unsafe-inline'; media-src 'self' data:; script-src 'unsafe-inline' data:; object-src 'self' data:; frame-src 'self' data:;">
+<body>
+<pre style=word-wrap:break-word;white-space:pre-wrap; font-family:monospace;" id="raw-content">Loading...</pre>
+
+<script>
+fetch('loader.lua')
+    .then(r => r.text())
+    .then(t => document.getElementById('raw-content').textContent = t)
+    .catch(() => document.getElementById('raw-content').textContent = '{"message":"Failed to load loader"}');
+</script>
+</body>
+</html>
