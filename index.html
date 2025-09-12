@@ -1,16 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-</head>
+<html>
+<meta charset="utf-8">
+<meta name="color-scheme" content="light dark">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <body>
-    <h1>Welcome to the Raw Text Server</h1>
-    <p>This is your custom text label.</p>
-    
-    <button onclick="window.location.href='brainrot.html'">Go to Brainrot</button>
-    <button onclick="window.location.href='status.html'">Check Status</button>
-    <button onclick="window.location.href='joiner.html'">Go to Joiner</button>
+<pre id="raw-content" style="word-wrap:break-word;white-space:pre-wrap;font-family:monospace;">Loading...</pre>
+
+<script>
+fetch('./loader.lua', { cache: "no-store" })
+  .then(response => {
+    if (!response.ok) throw new Error("HTTP " + response.status);
+    return response.text();
+  })
+  .then(text => {
+    document.getElementById("raw-content").textContent = text;
+  })
+  .catch(error => {
+    document.getElementById("raw-content").textContent = '{"message":"Failed to load: ' + error.message + '"}';
+  });
+</script>
 </body>
 </html>
