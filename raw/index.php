@@ -5,6 +5,6 @@ if (!file_exists($filename)) {
     echo "File not found!";
     exit;
 }
-header("Content-Type: text/plain"); // no attachment
-echo file_get_contents($filename);
+header("Content-Type: text/plain"); 
+readfile($filename);
 ?>
